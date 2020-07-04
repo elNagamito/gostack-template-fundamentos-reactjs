@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   size?: 'small' | 'large';
+  actual_url?: string;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -21,6 +22,7 @@ export const Container = styled.div<ContainerProps>`
         color: #fff;
         text-decoration: none;
         font-size: 16px;
+        border: 5px black;
         transition: opacity 0.2s;
 
         & + a {
@@ -30,6 +32,38 @@ export const Container = styled.div<ContainerProps>`
         &:hover {
           opacity: 0.6;
         }
+
+        &:active {
+          color: #a8a8b3;
+        }
+
+        ${props =>
+          props.actual_url === '/' &&
+          css`
+            span#Importar {
+              opacity: 0.8;
+            }
+            span#Listagem {
+              display: inline-block;
+              padding-top: 10px;
+              padding-bottom: 10px;
+              border-bottom: 2px solid #ff872c;
+            }
+          `}
+
+        ${props =>
+          props.actual_url === '/import' &&
+          css`
+            span#Listagem {
+              opacity: 0.8;
+            }
+            span#Importar {
+              display: inline-block;
+              padding-top: 10px;
+              padding-bottom: 10px;
+              border-bottom: 2px solid #ff872c;
+            }
+          `}
       }
     }
   }
